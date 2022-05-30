@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, { useState, useEffect, useRef, Fragment } from 'react';
 import './index.css';
 import IconAssets from './lightboxAssets/index';
@@ -21,7 +20,7 @@ export default function LightBox(props) {
   const [downloadMediaUrl, setDownloadMediaUrl] = useState('');
   const [scale, setScale] = useState(1);
   const [isScalable, setIsScalable] = useState(false);
-  const [media, setMedia] = useState(mediaItems[currentSlide].originalPath);
+  const [media, setMedia] = useState(mediaItems[currentSlide].media);
 
   const setToFullScreen = () => {
     const el = inputRef.current;
@@ -40,7 +39,6 @@ export default function LightBox(props) {
   };
 
   const toggleIsOpen = () => {
-    console.log('toggle is open', toggler);
     setToggler(!toggler);
     callback();
   };
@@ -52,12 +50,12 @@ export default function LightBox(props) {
       setIsScalable(false);
     }
 
-    const mediaUrl = mediaItems[currentSlide].originalPath;
+    const mediaUrl = mediaItems[currentSlide].media;
     fetch(mediaUrl).then(res => res.blob()).then(data => {
       const blobUrl = URL.createObjectURL(data);
       setDownloadMediaUrl(blobUrl);
     });
-    setMedia(mediaItems[currentSlide].originalPath);
+    setMedia(mediaItems[currentSlide].media);
   }, [mediaItems, currentSlide]);
 
   const showPrev = e => {
@@ -92,7 +90,6 @@ export default function LightBox(props) {
   const showNext = e => {
     e.stopPropagation();
     let currentIndex = currentSlide;
-    console.log('currentSlide before ', currentIndex, currentSlide);
 
     if (currentIndex >= mediaItems.length - 1) {
       currentIndex = 0;
@@ -101,7 +98,6 @@ export default function LightBox(props) {
     }
 
     setCurrentSlide(currentIndex);
-    console.log('currentSlide after ', currentIndex, currentSlide, mediaItems[currentIndex].type);
 
     if (mediaItems[currentIndex].type === 'VIDEO' || mediaItems[currentIndex].type === 'IMAGE') {
       setIsScalable(true);
@@ -164,7 +160,7 @@ export default function LightBox(props) {
     className: "count-h6"
   }, currentSlide + 1, "/", mediaItems.length)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     className: "button-group"
-  }, isScalable ? /*#__PURE__*/React.createElement("div", null, ' ', /*#__PURE__*/React.createElement("div", {
+  }, isScalable ? /*#__PURE__*/React.createElement("div", null, " ", /*#__PURE__*/React.createElement("div", {
     className: "tooltip"
   }, /*#__PURE__*/React.createElement("button", {
     className: "icon-button",
@@ -239,7 +235,7 @@ export default function LightBox(props) {
   }))) : /*#__PURE__*/React.createElement("div", null), media ? /*#__PURE__*/React.createElement("div", {
     className: "media-center",
     ref: inputRef
-  }, mediaItems[currentSlide].type === 'IMAGE' ? /*#__PURE__*/React.createElement("div", {
+  }, mediaItems[currentSlide].type === "IMAGE" ? /*#__PURE__*/React.createElement("div", {
     style: {
       transform: `scale(${scale})`
     }
@@ -249,7 +245,7 @@ export default function LightBox(props) {
     className: "lightbox-media"
   }), /*#__PURE__*/React.createElement("h6", {
     className: "lightbox-caption"
-  }, mediaItems[currentSlide].caption ? mediaItems[currentSlide].caption : '')) : mediaItems[currentSlide].type === 'VIDEO' ? /*#__PURE__*/React.createElement("div", {
+  }, mediaItems[currentSlide].caption ? mediaItems[currentSlide].caption : "")) : mediaItems[currentSlide].type === "VIDEO" ? /*#__PURE__*/React.createElement("div", {
     style: {
       transform: `scale(${scale})`
     }
@@ -264,17 +260,17 @@ export default function LightBox(props) {
     type: "video/ogg"
   })), /*#__PURE__*/React.createElement("h5", {
     className: "lightbox-caption"
-  }, mediaItems[currentSlide].caption ? mediaItems[currentSlide].caption : '')) : mediaItems[currentSlide].type === 'AUDIO' ? /*#__PURE__*/React.createElement("div", {
+  }, mediaItems[currentSlide].caption ? mediaItems[currentSlide].caption : "")) : mediaItems[currentSlide].type === "AUDIO" ? /*#__PURE__*/React.createElement("div", {
     className: "lightbox-audio"
   }, /*#__PURE__*/React.createElement("audio", {
     src: media,
     controls: true,
     style: {
-      width: window.innerWidth < 390 ? '210px' : '300px'
+      width: window.innerWidth < 390 ? "210px" : "300px"
     }
   }), /*#__PURE__*/React.createElement("h5", {
     className: "lightbox-caption"
-  }, mediaItems[currentSlide].caption ? mediaItems[currentSlide].caption : '')) : /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h6", {
+  }, mediaItems[currentSlide].caption ? mediaItems[currentSlide].caption : "")) : /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h6", {
     className: "lightbox-caption"
   }, "Mediafile is Not supported"))) : /*#__PURE__*/React.createElement("div", {
     className: "circular-progress"

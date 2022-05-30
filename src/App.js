@@ -61,7 +61,7 @@ function App() {
       ))}
       {toggler ? (
         <LightBox
-          currentSlide={currentSlide}
+          // currentSlide={currentSlide}
           mediaItems={data}
           callback={() => {
             setToggler(false);

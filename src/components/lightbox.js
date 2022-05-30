@@ -9,15 +9,18 @@ export default function LightBox(props) {
   const mediaItems =
     props.mediaItems &&
     props.mediaItems.filter((item, i) => {
-      if (i === props.currentSlide) {
-        newSlide = item;
+      if(props.currentSlide){
+        if (i === props.currentSlide) {
+          newSlide = item;
+        }
       }
       return item.type.toLowerCase() !== 'file';
     });
   const newCurrentSlide = mediaItems.findIndex((res) => res === newSlide);
   const { callback } = props;
   const [toggler, setToggler] = useState(true);
-  const [currentSlide, setCurrentSlide] = useState(newCurrentSlide);
+  const [currentSlide, setCurrentSlide] = 
+  useState(props.currentSlide ?   newCurrentSlide :0);
   const [downloadMediaUrl, setDownloadMediaUrl] = useState('');
   const [scale, setScale] = useState(1);
   const [isScalable, setIsScalable] = useState(false);

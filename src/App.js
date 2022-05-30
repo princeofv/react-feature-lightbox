@@ -1,6 +1,4 @@
-import logo from './logo.svg';
 import React, { useState } from "react";
-import './App.css';
 import { LightBox } from './components';
 const image1 =
   "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80";
@@ -17,7 +15,6 @@ const data = [
     media: image2,
     type: "IMAGE",
   },
-
   {
     media: image3,
     type: "IMAGE",
@@ -35,7 +32,7 @@ function App() {
     const [toggler, setToggler] = useState(false);
     const [currentSlide, setCurrentSlide] = useState();
   return (
-    <div className="App">
+    <div style={{textAlign:'center'}}>
       {data?.map((val, i) => (
         <div key={val.media}>
           <div

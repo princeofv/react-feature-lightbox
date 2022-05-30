@@ -80,9 +80,7 @@
     "webpack": "^5.72.1"
   },
   "peerDependencies": {
-    "react": "^18.0.1",
-    "react-dom": "^18.0.1",
-    "react-scripts": "4.0.3"
+ 
   },
   "proxy": "http://localhost:3000",
   "license": "MIT"

@@ -37,7 +37,6 @@ export default function LightBox(props) {
     }
   };
   const toggleIsOpen = () => {
-    console.log('toggle is open', toggler);
     setToggler(!toggler);
     callback();
   };
@@ -89,14 +88,12 @@ export default function LightBox(props) {
   const showNext = (e) => {
     e.stopPropagation();
     let currentIndex = currentSlide;
-    console.log('currentSlide before ', currentIndex, currentSlide);
     if (currentIndex >= mediaItems.length - 1) {
       currentIndex = 0;
     } else {
       currentIndex += 1;
     }
     setCurrentSlide(currentIndex);
-    console.log('currentSlide after ', currentIndex, currentSlide, mediaItems[currentIndex].type);
     if (mediaItems[currentIndex].type === 'VIDEO' || mediaItems[currentIndex].type === 'IMAGE') {
       setIsScalable(true);
     } else {
@@ -207,7 +204,6 @@ export default function LightBox(props) {
 
             {media ? (
               <div className="media-center" ref={inputRef}>
-                {console.log("media", media)}
                 {mediaItems[currentSlide].type === "IMAGE" ? (
                   <div style={{ transform: `scale(${scale})` }}>
                     <img src={media} alt="Broken" className="lightbox-media" />

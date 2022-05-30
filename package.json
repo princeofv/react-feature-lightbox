@@ -1,13 +1,16 @@
 {
   "name": "react-feature-lightbox",
   "version": "0.1.0",
-   "main": "dist/index.js",
-    "private": false,
-    "files": [ "dist", "README.md" ],
-    "repository": {
-        "type": "git",
-        "url": "URL_OF_YOUR_REPOSITORY"
-    },
+  "main": "dist/index.js",
+  "private": false,
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/princeofv/react-feature-lightbox"
+  },
   "dependencies": {
     "@storybook/addon-storyshots": "^6.5.6",
     "@testing-library/jest-dom": "^5.16.4",
@@ -78,5 +81,5 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.3"
-}
+  }
 }

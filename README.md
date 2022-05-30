@@ -14,8 +14,10 @@ Lightbox is a UI component which will be a simple, unobtrusive script used to ov
 # Code 
   Media Items has Must in Array of Object type 
 
-    // import { LightBox } from 'react-feature-lightbox';
+     import { LightBox } from 'react-feature-lightbox';
+
     <!-- Must need to send 2 data , Media and Media type  -->
+    
     const data = [
       {
         media: image1,
@@ -31,9 +33,12 @@ Lightbox is a UI component which will be a simple, unobtrusive script used to ov
     ];
 
     function App() {
-    <!-- Toggler state is used to open the Modal  -->
+    // Toggler state is used to open the Modal 
+
     const [toggler, setToggler] = useState(false);
+
     <!-- Current Slide of Media Items  -->
+
     const [currentSlide, setCurrentSlide] = useState();
       return (
         <div style={{textAlign:'center'}}>

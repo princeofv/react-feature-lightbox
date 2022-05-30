@@ -1,6 +1,4 @@
-
-import PropTypes from 'prop-types';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef ,Fragment } from 'react';
 import './index.css';
 import IconAssets from './lightboxAssets/index';
 
@@ -23,7 +21,7 @@ export default function LightBox(props) {
   const [downloadMediaUrl, setDownloadMediaUrl] = useState('');
   const [scale, setScale] = useState(1);
   const [isScalable, setIsScalable] = useState(false);
-  const [media, setMedia] = useState(mediaItems[currentSlide].originalPath);
+  const [media, setMedia] = useState(mediaItems[currentSlide].media);
   const setToFullScreen = () => {
     const el = inputRef.current;
     if (el) {
@@ -49,14 +47,14 @@ export default function LightBox(props) {
     } else {
       setIsScalable(false);
     }
-    const mediaUrl = mediaItems[currentSlide].originalPath;
+    const mediaUrl = mediaItems[currentSlide].media;
     fetch(mediaUrl)
       .then(res => res.blob())
       .then(data => {
         const blobUrl = URL.createObjectURL(data);
         setDownloadMediaUrl(blobUrl);
       });
-    setMedia(mediaItems[currentSlide].originalPath);
+    setMedia(mediaItems[currentSlide].media);
   }, [mediaItems, currentSlide]);
 
   const showPrev = (e) => {
@@ -145,7 +143,7 @@ export default function LightBox(props) {
     }
   };
   return (
-    <>
+    <Fragment>
       {toggler ? (
         <div className="lightbox">
           <div className="lsbox">
@@ -159,7 +157,7 @@ export default function LightBox(props) {
                 <div className="button-group">
                   {isScalable ? (
                     <div>
-                      {' '}
+                      {" "}
                       <div className="tooltip">
                         <button className="icon-button" type="button" onClick={ZoomIn}>
                           <img src={IconAssets.ZoomIn} alt="" className="svg-icons" />
@@ -209,34 +207,35 @@ export default function LightBox(props) {
 
             {media ? (
               <div className="media-center" ref={inputRef}>
-                {mediaItems[currentSlide].type === 'IMAGE' ? (
+                {console.log("media", media)}
+                {mediaItems[currentSlide].type === "IMAGE" ? (
                   <div style={{ transform: `scale(${scale})` }}>
                     <img src={media} alt="Broken" className="lightbox-media" />
                     <h6 className="lightbox-caption">
-                      {mediaItems[currentSlide].caption ? mediaItems[currentSlide].caption : ''}
+                      {mediaItems[currentSlide].caption ? mediaItems[currentSlide].caption : ""}
                     </h6>
                   </div>
-                ) : mediaItems[currentSlide].type === 'VIDEO' ? (
+                ) : mediaItems[currentSlide].type === "VIDEO" ? (
                   <div style={{ transform: `scale(${scale})` }}>
                     <video className="lightbox-media" controls>
                       <source src={media} type="video/mp4" />
                       <source src={media} type="video/ogg" />
                     </video>
                     <h5 className="lightbox-caption">
-                      {mediaItems[currentSlide].caption ? mediaItems[currentSlide].caption : ''}
+                      {mediaItems[currentSlide].caption ? mediaItems[currentSlide].caption : ""}
                     </h5>
                   </div>
-                ) : mediaItems[currentSlide].type === 'AUDIO' ? (
+                ) : mediaItems[currentSlide].type === "AUDIO" ? (
                   <div className="lightbox-audio">
                     <audio
                       src={media}
                       controls
                       style={{
-                        width: window.innerWidth < 390 ? '210px' : '300px',
+                        width: window.innerWidth < 390 ? "210px" : "300px",
                       }}
                     />
                     <h5 className="lightbox-caption">
-                      {mediaItems[currentSlide].caption ? mediaItems[currentSlide].caption : ''}
+                      {mediaItems[currentSlide].caption ? mediaItems[currentSlide].caption : ""}
                     </h5>
                   </div>
                 ) : (
@@ -262,18 +261,6 @@ export default function LightBox(props) {
           </div>
         </div>
       ) : null}
-    </>
+    </Fragment>
   );
 }
-
-LightBox.propTypes = {
-  currentSlide: PropTypes.number,
-  callback: PropTypes.func,
-  mediaItems: PropTypes.array.isRequired,
-};
-
-LightBox.defaultProps = {
-  currentSlide: 0,
-  callback: undefined,
-  mediaItems: [],
-};

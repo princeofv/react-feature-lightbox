@@ -1,0 +1,199 @@
+.lightbox {
+  display: block;
+  position: fixed;
+  z-index: 9999999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1em;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.count-h6 {
+  margin: 10px;
+  color: #fff;
+}
+
+.lsbox {
+  position: absolute;
+  top: -8px;
+  left: 0px;
+  height: 100%;
+  background: rgba(30, 30, 30, 0.9);
+  cursor: pointer;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.lightbox-header {
+  flex-direction: row;
+  position: fixed;
+  top: 0px;
+  padding-right: 10px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.lightbox-media {
+  max-width: 100%;
+  object-fit: 'cover';
+  width: 500px;
+}
+
+.lightbox-caption {
+  color: #fff;
+  margin-top: -1;
+  display: flex;
+  justify-content: center;
+}
+
+.lightbox-audio {
+  display: contents
+}
+
+.circular-progress {
+  align-items: center;
+  justify-content: center;
+}
+
+.loader {
+  border: 5px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 5px solid #3498db;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.close-btn {
+  padding: 7px;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(35, 35, 35, 0.65);
+}
+
+.slide-btn {
+  width: 35px;
+  height: 35px;
+  background-color: rgba(35, 35, 35, 0.65);
+  padding: 4px;
+  cursor: "default";
+}
+
+.left {
+  padding: 7px;
+}
+
+.right {
+  padding: 7px;
+}
+
+.slide-btn button {
+  padding: 0px;
+}
+
+.media-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-group {
+  margin-top: 5px;
+  display: flex;
+  z-index: 999999;
+}
+
+/* Icon Button */
+.icon-button {
+  background-color: rgba(35, 35, 35, 0.65);
+  border: none;
+  color: white;
+  padding: 6px;
+  /* font-size: 16px; */
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.icon-button:hover {
+  background-color: #808080;
+}
+
+/* Tooltip */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 50px;
+  background-color: #808080;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: -75%;
+  left: -50%;
+  /* margin-left: -60px; */
+  font-size: 10px;
+}
+
+.tooltip .tooltiptext::after {
+  /* content: ""; */
+  /* position: absolute; */
+  /* top: -40%; */
+  /* left: 50%; */
+  /* margin-left: -5px; */
+  /* border-width: 5px; */
+  /* border-style: solid; */
+  /* border-color: transparent transparent #808080 transparent; */
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+/* icons */
+
+.svg-icons {
+  fill: currentColor;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  font-size: 1.5rem;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  flex-shrink: 0;
+  user-select: none;
+}

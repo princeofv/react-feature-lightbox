@@ -12,15 +12,15 @@ Lightbox is a UI component which will be a simple, unobtrusive script used to ov
   Media Items has Must in Array of Object type 
 
     const data = [
-  {
-    media: image1,
-    type: "IMAGE",
-  },
-  {
-    media: image1,
-    type: "AUDIO",
-  },{
-    media: image1,
-    type: "VIDEO",
-  },
-];
+      {
+        media: image1,
+        type: "IMAGE",
+      },
+      {
+        media: image1,
+        type: "AUDIO",
+      },{
+        media: image1,
+        type: "VIDEO",
+      },
+    ];
